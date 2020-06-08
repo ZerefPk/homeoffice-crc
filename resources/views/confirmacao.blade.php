@@ -27,10 +27,10 @@
                     </center>
                     <div class="alert alert-success" role="alert">
 
-                        <h2 class="card-text">RELATORIO DO DIA JÁ ENVIADO</h2>
+                        <h2 class="card-text">RELATÓRIO DO DIA JÁ ENVIADO</h2>
                     </div>
 
-                    <a href="" class="btn btn-primary btn-block"> <i class="fa fa-eye"></i> VER RELATORIOS </a>
+                    <a href="{{route('relatorios')}}" class="btn btn-primary btn-block"> <i class="fa fa-eye"></i> VER RELATÓRIOS </a>
                 </div>
             </div>
         </div>

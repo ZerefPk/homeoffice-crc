@@ -55,7 +55,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>RELATORIO SIMPLIFICADO DE TELETRABALHO</td>
+                <td>RELATÓRIO SIMPLIFICADO DE TELETRABALHO</td>
                 <td>PERIODO: {{$inicio}} a {{$final}}</td>
             </tr>
             <tr>

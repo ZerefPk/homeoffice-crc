@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">RELATORIOS</div>
+                <div class="card-header">RELATÓRIOS</div>
 
                 <div class="card-body">
                     @if (session('pendencia'))
@@ -14,7 +14,7 @@
                     </div>
                     @else
                     <div class="alert alert-success" role="alert">
-                        "Você não possui PENDÊNCIAS para o dia. Seu Relatorio foi entregue!"
+                        "Você não possui PENDÊNCIAS para o dia. Seu Relatório foi entregue!"
                     </div>
                     @endif
                     <nav class="navbar">

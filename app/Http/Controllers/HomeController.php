@@ -39,6 +39,7 @@ class HomeController extends Controller
     {
         $info = Relatorio::where('user_id', 1)
                     ->where("data_referencia",  date('Y-m-d'))
+                    ->where('user_id', auth()->user()->id)
                     ->first();
         $info= $info->detalhes()->where('periodo','MANHÃ')->first();
         session()->forget('periodo');
@@ -62,6 +63,7 @@ class HomeController extends Controller
 
         $info = Relatorio::where('user_id', 1)
                     ->where("data_referencia",  date('Y-m-d'))
+                    ->where('user_id', auth()->user()->id)
                     ->first();
         $info= $info->detalhes()->where('periodo','TARDE')->first();
         session()->forget('periodo');
