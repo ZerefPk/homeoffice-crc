@@ -41,7 +41,7 @@
             <tbody>
                 <tr>
                     <th scope="row">{{$relatorio->id}}</th>
-                    <td>{{$relatorio->data_referencia}}</td>
+                    <td>{{date('d/m/Y', strtotime($object->data_referencia))}}</td>
 
                     <td> {{ ($relatorio->pendencia) ? "NÃO" : "SIM" }}</td>
                 </tr>
@@ -114,9 +114,7 @@
                         </div>
 
                         <p>CURSO: {{$tarde->curso}} </p>
-                        <div>
-                            anecos
-                        </div>
+                        
 
                         @else
                         <p>PERIODO NÃO ADICIONADO</p>
