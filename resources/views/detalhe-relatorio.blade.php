@@ -41,7 +41,7 @@
             <tbody>
                 <tr>
                     <th scope="row">{{$relatorio->id}}</th>
-                    <td>{{date('d/m/Y', strtotime($object->data_referencia))}}</td>
+                    <td>{{date('d/m/Y', strtotime($relatorio->data_referencia))}}</td>
 
                     <td> {{ ($relatorio->pendencia) ? "NÃO" : "SIM" }}</td>
                 </tr>
