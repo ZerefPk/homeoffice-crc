@@ -46,7 +46,7 @@ class Pendencia
         $tarde = ( $tarde ) ? "OK" : "EM FALTA" ;
         
         if($manha=="EM FALTA"  || $tarde == "EM FALTA" || $relatoriId == "EM FALTA" and $relatoriId != "OK" )
-            session()->put('pendencia', "Relatorio com pendência! <br> Manhã: {$manha} | Tarde: {$tarde} | ENVIAR AO RH: {$relatoriId} ");
+            session()->put('pendencia', "Relatório com pendência! <br> Manhã: {$manha} | Tarde: {$tarde} | ENVIAR AO RH: {$relatoriId} ");
         else
             session()->forget('pendencia');
             

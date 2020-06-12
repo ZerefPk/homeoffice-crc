@@ -11,7 +11,7 @@
 </div>
 @else
 <div class="alert alert-success" role="alert">
-    "Você não possui PENDÊNCIAS para o dia. Seu Relatorio foi entregue!"
+    "Você não possui PENDÊNCIAS para o dia. Seu Relatório foi entregue!"
 </div>
 @endif
 
@@ -63,7 +63,7 @@
         <div class="card col-md-6">
             <div class="card-body">
                 <div class="card-text">
-                    <h3> Relatorio do dia: {{date('d/m/Y')}}</h3>
+                    <h3> Relatóio do dia: {{date('d/m/Y')}}</h3>
 
                 </div>
             </div>
