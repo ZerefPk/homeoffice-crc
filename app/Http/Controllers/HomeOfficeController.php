@@ -26,7 +26,7 @@ class HomeOfficeController extends Controller
     public function storeRelatorio(DetalheRequest $request)
     {
         $dataForm = $request->all();
-        $relatoriId = Relatorio::where('data_referencia', date('y-m-d'))->first();
+        $relatoriId = Relatorio::where('user_id', auth()->id)->where('data_referencia', date('y-m-d'))->first();
 
         
         $create = Detalhe::create([
