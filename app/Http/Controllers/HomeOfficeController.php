@@ -19,14 +19,14 @@ class HomeOfficeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','pendencia']);
         
     }
 
     public function storeRelatorio(DetalheRequest $request)
     {
         $dataForm = $request->all();
-        $relatoriId = Relatorio::where('user_id', auth()->id)->where('data_referencia', date('y-m-d'))->first();
+        $relatoriId = Relatorio::where('user_id', auth()->user()->id)->where('data_referencia', date('y-m-d'))->first();
 
         
         $create = Detalhe::create([

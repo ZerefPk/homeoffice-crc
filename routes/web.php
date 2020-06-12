@@ -13,7 +13,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
 
 Auth::routes();
@@ -49,3 +49,5 @@ Route::prefix('adm')->middleware('checkAdm')->group(function(){
     Route::post('/simplificado','AdmController@simplificado')->name('simplificado');
     Route::post('/completo','AdmController@completo')->name('completo');
 });
+Auth::routes();
+

@@ -1,99 +1,78 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Dashboard')
+
+@section('content_header')
+
+
+@if (session('pendencia'))
+<div class="alert alert-danger" role="alert">
+    {!! session('pendencia') !!}
+</div>
+@else
+<div class="alert alert-success" role="alert">
+    "Você não possui PENDÊNCIAS para o dia. Seu Relatorio foi entregue!"
+</div>
+@endif
+
+@stop
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header"> <i class="fa fa-dashboard"></i> Dashboard</div>
+<div class="shadow-lg  p-3 mb-5 bg-white rounded">
+    <div class="card">
+        <div class="card-body">
 
-                <div class="card-body">
-                    @if (session('pendencia'))
-                    <div class="alert alert-danger" role="alert">
-                        {!! session('pendencia') !!}
-                    </div>
-                    @else
-                    <div class="alert alert-success" role="alert">
-                        "Você não possui PENDÊNCIAS para o dia. Seu Relatorio foi entregue!"
-                    </div>
-                    @endif
+            <h5 class="card-text">ADICIONE O RELATÓRIO:</h5>
+            <div class="row">
 
-                    <div class="row">
-
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-header">
-                                    RELATÓRIO DO DIA:
-                                </div>
-                                <div class="card-body">
-
-                                    <h5 class="card-text">ADICIONE O RELATÓRIO:</h5>
-                                    <a href="{{route('relatorioManha')}}" class="btn btn-success btn-lg btn-block"> <i
-                                            class="fa fa-plus">
-                                        </i> MANHÃ</a>
-                                    <a href="{{route('relatorioTarde')}}" class="btn btn-success btn-lg btn-block"> <i
-                                            class="fa fa-plus">
-                                        </i> TARDE</a>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-header">
-                                    LISTAR RELATÓRIOS
-                                </div>
-                                <div class="card-body">
-
-                                    <h5 class="card-text">RELATÓRIOS ADICIONADOS:</h5>
-                                    <a href="{{route('relatorios')}}" class="btn btn-primary btn-lg btn-block"> <i
-                                            class="fa fa-eye"> </i>
-                                        MEUS RELATÓRIOS
-                                    </a>
-                                    @if(auth()->user()->admin)
-                                    <a href="{{route('funcionarios')}}" class="btn btn-primary btn-lg btn-block"> <i
-                                            class="fa fa-user"> </i>
-                                        FUNCIONÁRIOS
-                                    </a>
-                                    @endif
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <br>
-                    @if (session('pendencia'))
-                    <button type="button" data-toggle="modal" data-target="#modal1"
-                        class="btn btn-success btn-lg btn-block">ENVIAR PARA RH</button>
-                    <br>
-                    @endif
+                <div class="col-sm-5 m-4">
+                    <a href="{{route('relatorioManha')}}" class="btn btn-success btn-lg btn-block">
+                        <i class="fa fa-plus">
+                        </i> MANHÃ</a>
+                </div>
+                <div class="col-sm-5 m-4">
+                    <a href="{{route('relatorioTarde')}}" class="btn btn-success btn-lg btn-block">
+                        <i class="fa fa-plus">
+                        </i> TARDE</a>
                 </div>
             </div>
-            <br>
-            <center>
-
-                <div class="card col-md-6">
-                    <div class="card-body">
-                        <div id="hora" onload="time();" class="card-text"></div>
-
-
-                        <h3>{{date('d/m/Y')}}</h3>
-                    </div>
-
-
-                </div>
-
-
-
-
-            </center>
-
-
 
         </div>
+
     </div>
+    <div class="m-2">
+        <div class="container col-sm-5">
+            @if (session('pendencia'))
+            <button type="button" data-toggle="modal" data-target="#modal1"
+                class="btn btn-success btn-lg btn-block">ENVIAR
+                PARA
+                RH</button>
+            @endif
+        </div>
+    </div>
+
+    <di class="row">
+        <div class="card col-md-6">
+            <div class="card-body">
+                <div class="container">
+                    <div id="hora" onload="time();" class="card-text"></div>
+                </div >
+
+            </div>
+        </div>
+        <div class="card col-md-6">
+            <div class="card-body">
+                <div class="card-text">
+                    <h3> Relatorio do dia: {{date('d/m/Y')}}</h3>
+
+                </div>
+            </div>
+        </div>
 </div>
+
+</div>
+
+
 
 <!-- Modal -->
 <div class="modal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -131,8 +110,9 @@
     </div>
 </div>
 
-@endsection
-@push('script')
+@stop
+
+@section('js')
 <script>
 function time() {
     var date = new Date();
@@ -143,4 +123,4 @@ function time() {
 }
 window.setInterval("time();", 1000);
 </script>
-@endpush
+@stop

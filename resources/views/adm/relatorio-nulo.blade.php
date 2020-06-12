@@ -55,11 +55,11 @@
         </thead>
         <tbody>
             <tr>
-                <td>RELATORIO SIMPLIFICADO DE TELETRABALHO</td>
+                <td>RELATÓRIO SIMPLIFICADO DE TELETRABALHO</td>
                 <td>PERIODO: {{$inicio}} a {{$final}}</td>
             </tr>
             <tr>
-                <td>TOTAL DE FUNCIONARIOS: {{$countFunc}}</td>
+                <td>TOTAL DE FUNCIONÁRIOS: {{$countFunc}}</td>
                 <td>OCORR&Ecirc;NCIAS: 0</td>
             </tr>
         </tbody>

@@ -61,7 +61,7 @@
                 <td colspan="2">NOME: {{$nome}}</td>
             </tr>
             <tr>
-                <td>DATA: {{$relatorio->data_referencia}}</td>
+                <td>DATA: {{ \Carbon\Carbon::parse($relatorio->data_referencia)->format('d/m/Y')}}</td>
                 <td>ENVIADO: {{ ($relatorio->pendencia) ? "NÃO" : "SIM" }}</td>
             </tr>
             <tr>

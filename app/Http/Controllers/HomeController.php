@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','pendencia']);
        
         
     }
@@ -30,7 +30,6 @@ class HomeController extends Controller
     public function index()
     {
         
-        $this->verificarPendencia();
         return view('home');
         
     }
@@ -45,7 +44,6 @@ class HomeController extends Controller
         session()->forget('periodo');
         session()->put('periodo','MANHÃ');
         //dd($manha);
-        $this->verificarPendencia();
         $valid = $this->verificarEnvio();
         if($valid)
         {
@@ -60,7 +58,6 @@ class HomeController extends Controller
     }
     public function relatorioTarde()
     {
-
         $info = Relatorio::where('user_id',  auth()->user()->id)
                     ->where("data_referencia",  date('Y-m-d'))
                     
@@ -68,7 +65,7 @@ class HomeController extends Controller
         $info= $info->detalhes()->where('periodo','TARDE')->first();
         session()->forget('periodo');
         session()->put('periodo','TARDE');
-        $this->verificarPendencia();
+        
         $valid = $this->verificarEnvio();
         if($valid)
         {
@@ -82,39 +79,6 @@ class HomeController extends Controller
         return view('modelo-relatorio');
     }
     
-    public function verificarPendencia()
-    {
-        $relatoriId = Relatorio::where('data_referencia', date('y-m-d'))
-                ->where('user_id', auth()->user()->id)->first();
-       
-        if(!$relatoriId)
-        {
-            $relatoriId = Relatorio::create([
-                'data_referencia' => date('y-m-d'),
-                'user_id' => auth()->user()->id,
-                'pendencia' => 1,
-            ]);
-        }
-        
-        $manha = Detalhe::where('relatorio_id', $relatoriId->id)
-            ->where('periodo',"MANHÃ")
-            ->first();
-        $tarde = Detalhe::where('relatorio_id', $relatoriId->id)
-            ->where('periodo',"TARDE")
-            ->first();
-        $relatoriId = (!$relatoriId->pendencia)? "OK":"EM FALTA"; 
-
-            
-        $manha = ( $manha ) ? "OK" : "EM FALTA" ;
-        $tarde = ( $tarde ) ? "OK" : "EM FALTA" ;
-        
-        if($manha=="EM FALTA"  || $tarde == "EM FALTA" || $relatoriId == "EM FALTA" and $relatoriId != "OK" )
-            session()->put('pendencia', "Relatorio com pendência! <br> Manhã: {$manha} | Tarde: {$tarde} | ENVIAR AO RH: {$relatoriId} ");
-        else
-            session()->forget('pendencia');
-            
-    }
-
     
     public function confirmacao()
     {
